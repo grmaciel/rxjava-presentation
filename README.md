@@ -16,6 +16,8 @@
 | Async  | ```Future<T> getData()```  | ```Observable<T> getData()```
 
 ### Observable
+* Hot or Cold
+* 
 ```
 Observable<T>
 - onNext(T)
@@ -90,6 +92,11 @@ summonerDataRetrievalEvents
             .map(new CheckIsCacheValid())
             .flatMap(new RegionToMessagesRequestObservable());
 ```
+
+* zip()
+* concat()
+* reduce()
+* range()
 
 
 
