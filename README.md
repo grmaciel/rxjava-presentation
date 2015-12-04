@@ -2,7 +2,7 @@
 * Implementação na JVM do Reactive X
 
 ### Introdução
-* Android data load / AsynTask
+* Android data load / AsyncTask
 * Fluxo normal, você busca os dados
 * RXJava, ele te envia os dados
 * Iterable vs Observables
