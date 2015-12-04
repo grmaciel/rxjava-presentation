@@ -47,7 +47,48 @@ Subscriber<T> mySubscriber = new Subscriber<T>() {
 ```
 
 ### Operadores
+```
+service.getSharePerformance(matchId)
+                .map(extractImageUrl())
+                .flatMap(downloadImage())
+```
 
+```
+private Func1<DTO, String> extractUrl() {
+        return new Func1<DTO, String>() {
+            @Override
+            public String call(DTO dto) {
+                return dto.url;
+            }
+        };
+    }
+```
+
+```
+private Func1<String, Observable<Bitmap>> downloadImage() {
+        return new Func1<String, Observable<Bitmap>>() {
+            @Override
+            public Observable<Bitmap> call(String path) {
+                try {
+                    return Observable.just(Picasso.with(context)
+                            .load(path)
+                            .get());
+                } catch (IOException e) {
+                    return Observable.error(e);
+                }
+            }
+        };
+    }
+```
+```
+summonerDataRetrievalEvents
+            .subscribeOn(Schedulers.io())
+            .filter(new IsSummonerPresent())
+            .map(new ExtractSummoerInfo())
+            .map(new ExtractSummonerRegion())
+            .map(new CheckIsCacheValid())
+            .flatMap(new RegionToMessagesRequestObservable());
+```
 
 
 
